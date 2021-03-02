@@ -2,8 +2,10 @@ package com.eventosapp.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.eventosapp.models.Cliente;
 import com.eventosapp.repository.ClienteRepository;
@@ -22,16 +24,16 @@ public class ClienteController {
 	@RequestMapping(value="/cadastrarCliente", method=RequestMethod.POST)
 	public String form(Cliente cliente) {
 		clienteRepository.save(cliente);
-		return "redirect:/cadastrarCliente";
+		return "redirect:/clientes";
 	}
-//	
-//	@RequestMapping("/eventos")
-//	public ModelAndView listaEventos() {
-//		ModelAndView mv = new ModelAndView("/evento/visualizarEvento");
-//		Iterable<Evento> eventos = eventoRepository.findAll();
-//		mv.addObject("eventos", eventos);
-//		return mv;
-//	}
+	
+	@RequestMapping("/clientes")
+	public ModelAndView listaEventos() {
+		ModelAndView mv = new ModelAndView("/evento/visualizarEvento");
+		Iterable<Cliente> clientes = clienteRepository.findAll();
+		mv.addObject("eventos", clientes);
+		return mv;
+	}
 //	
 //	@RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
 //	public ModelAndView detalhesEvento(@PathVariable("codigo") Long codigo) {
@@ -44,12 +46,12 @@ public class ClienteController {
 //		return mv;
 //	}
 //	
-//	@RequestMapping("/deletar")
-//	public String deletarEvento(Long codigo) {
-//		Evento evento = eventoRepository.findByCodigo(codigo);
-//		eventoRepository.delete(evento);
-//		return "redirect:/eventos";
-//	}
+	@RequestMapping("/deletar")
+	public String deletarEvento(Long id) {
+		Cliente evento = clienteRepository.findById(id);
+		clienteRepository.delete(evento);
+		return "redirect:/clientes";
+	}
 //	
 //	@RequestMapping("/deletarConvidado")
 //	public String deletarConvidado(String rg) {
@@ -63,10 +65,10 @@ public class ClienteController {
 //	}
 //	
 //	@RequestMapping(value = "/{codigo}", method = RequestMethod.POST)
-//	public String detalhesEventoPost(@PathVariable("codigo") Long codigo, Convidado convidado) {
-//		Evento evento = eventoRepository.findByCodigo(codigo);
-//		convidado.setEvento(evento);
-//		cr.save(convidado);
+//	public String detalhesEventoPost(@PathVariable("id") Long id, Cliente cliente) {
+//		Cliente cliente = clienteRepository.findById(id);
+//		cliente.set(cliente);
+//		clienteRepository.save(cliente);
 //		return "redirect:/{codigo}";
 //	}
 }

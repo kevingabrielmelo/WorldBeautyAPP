@@ -2,7 +2,7 @@
 <html xmlns:th="http://thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-<title>Visualização de eventos</title>
+<title>Visualização de clientes</title>
 <!-- Para corrigir acentos da página! -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!--Import Google Icon Font-->
@@ -39,12 +39,12 @@ body {
 <!-- Paginação rosa da página! -->
 	<nav>
 		<div class="nav-wrapper">
-		<a href="//www.google.com"><img src="imagens/logo-sem-fundo.PNG" height="65" width="90" class="media-object  img-responsive img-thumbnail"></a>
+		<a href="//www.google.com"><img src="imagens/cliente.png" height="65" width="90" class="media-object  img-responsive img-thumbnail"></a>
      	 <ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
-			<a href="#" class="brand-logo center">Lista de eventos <i class="material-icons right">format_list_numbered</i></a>
+			<a href="#" class="brand-logo center">Lista de clientes <i class="material-icons right">format_list_numbered</i></a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 				<li><a href="/" class="waves-effect waves-light btn">Página inicial <i class="material-icons right">home</i></a></li>
-				<li><a href="/cadastrarEvento" class="waves-effect waves-light btn">Cadastrar evento <i class="material-icons right">add_circle</i></a></li>
+				<li><a href="/cadastrarCliente" class="waves-effect waves-light btn">Cadastrar novo cliente <i class="material-icons right">add_circle</i></a></li>
 			</ul>
 		</div>
 	</nav>
@@ -53,19 +53,19 @@ body {
 		<thead>
 			<tr>
 				<th>Nome</th>
-				<th>Local</th>
-				<th>Data</th>
-				<th>Horário</th>
+				<th>Telefone</th>
+				<th>Data de nascimento</th>
+				<th>Gênero</th>
 				<th>Deletar</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="evento : ${eventos}">
-				<td><i><b><a th:href="@{/{codigo}(codigo = ${evento.codigo})}"><span th:text="${evento.nome}"></span> <i class="material-icons left">create</i></a></b></i></td>
-				<td><span th:text="${evento.local}"></span></td>
-				<td><span th:text="${evento.data}"></span></td>
-				<td><span th:text="${evento.horario}"></span></td>
-				<td><i><b><a th:href="@{/deletar(codigo = ${evento.codigo})}"><i class="material-icons left">delete_forever</i></a></b></i></td>
+			<tr th:each="cliente : ${eventos}">
+				<td><i><b><a th:href="@{/{id}(id = ${cliente.id})}"><span th:text="${cliente.nome}"></span> <i class="material-icons left">create</i></a></b></i></td>
+				<td><span th:text="${cliente.telefone}"></span></td>
+				<td><span th:text="${cliente.dataNascimento}"></span></td>
+				<td><span th:text="${cliente.genero}"></span></td>
+				<td><i><b><a th:href="@{/deletar(id = ${cliente.id})}"><i class="material-icons left">delete_forever</i></a></b></i></td>
 			</tr>
 		</tbody>
 	</table>
