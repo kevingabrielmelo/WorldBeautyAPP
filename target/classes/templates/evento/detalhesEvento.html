@@ -18,72 +18,83 @@
 
 <style>
 body {
-  background-image: url('imagens/evento_cadastro.jpg'); 
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+	background-image: url('imagens/evento_cadastro.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
 }
 
-	th{
-		color: white;
-	}
-	
-	td{
+th {
 	color: white;
-	}
-	form {
+}
+
+td {
+	color: white;
+}
+
+form {
 	text-align: center;
 	position: static;
-	width:100%;
-	}
-	input{
-  color: white;
-	}
+	width: 100%;
+}
+
+input {
+	color: white;
+}
 </style>
 
 <body>
 
-<!-- Paginação rosa da página! -->
+	<!-- Paginação rosa da página! -->
 	<nav>
 		<div class="nav-wrapper">
-			<div th:each="evento : ${evento}">
-			<a href="//www.google.com"><img src="imagens/logo-sem-fundo.PNG" height="65" width="90" class="media-object  img-responsive img-thumbnail"></a>
-     	 <ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
-			<a class="brand-logo center"><span th:text = "${evento.nome}"></span><i class="material-icons right">mood</i></a>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="/" class="waves-effect waves-light btn">Página inicial <i class="material-icons right">home</i></a></li>
-				<li><a href="/eventos" class="waves-effect waves-light btn">Voltar <i class="material-icons right">arrow_back</i></a></li>
-			</ul>
+			<div th:each="clientes : ${cliente}">
+				<a href="//www.google.com"><img src="imagens/logo-sem-fundo.PNG"
+					height="65" width="90"
+					class="media-object  img-responsive img-thumbnail"></a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
+				<a class="brand-logo center"><span th:text="${cliente.nome}"></span><i
+					class="material-icons right">mood</i></a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="/" class="waves-effect waves-light btn">Página
+							inicial <i class="material-icons right">home</i>
+					</a></li>
+					<li><a href="/clientes" class="waves-effect waves-light btn">Voltar
+							<i class="material-icons right">arrow_back</i>
+					</a></li>
+				</ul>
 			</div>
 		</div>
 	</nav>
-	
+
 	<table class="container">
 		<thead>
 			<tr>
-				<th>Descrição do evento</th>
-				<th>Local</th>
-				<th>Data</th>
-				<th>Horário</th>
+				<th>Nome do cliente</th>
+				<th>Telefone</th>
+				<th>Data de nascimento</th>
+				<th>Gênero</th>
+				<th>Editar</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td><span th:text="${evento.nome}"></span></td>
-				<td><span th:text="${evento.local}"></span></td>
-				<td><span th:text="${evento.data}"></span></td>
-				<td><span th:text="${evento.horario}"></span></td>
+				<td><div contenteditable><span th:text="${cliente.nome}"></span></div></td>
+				<td><span th:text="${cliente.telefone}"></span></td>
+				<td><span th:text="${cliente.dataNascimento}"></span></td>
+				<td><span th:text="${cliente.genero}"></span></td>
+				<td><i><b><a th:href="@{/update(id = ${cliente.id})}"><i
+								class="material-icons left">create</i></a></b></i></td>
 			</tr>
 		</tbody>
 	</table>
-	
+
 	<th:block th:include="mensagemValidacao"></th:block>
-	
+
 	<br>
 	<br>
 	<br>
-	
-	<div class="row center">
+			<!-- <div class="row center">
 				<h5 class="header center white-text">Adicione convidados a o evento!</h5>
 			</div>
 	
@@ -129,8 +140,9 @@ body {
 				<td><i><b><a th:href="@{/deletarConvidado(rg = ${convidado.rg})}"><i class="material-icons left">delete_forever</i></a></b></i></td>
 			</tr>
 		</tbody>
-	</table>
-	
-	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	</table> -->
+
+			<script type="text/javascript"
+				src="materialize/js/materialize.min.js"></script>
 </body>
 </html>

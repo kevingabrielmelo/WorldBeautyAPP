@@ -34,22 +34,29 @@ public class ClienteController {
 		mv.addObject("eventos", clientes);
 		return mv;
 	}
-//	
-//	@RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
-//	public ModelAndView detalhesEvento(@PathVariable("codigo") Long codigo) {
-//		Evento evento = eventoRepository.findByCodigo(codigo);
-//		ModelAndView mv = new ModelAndView("evento/detalhesEvento");
-//		mv.addObject("evento", evento);
-//		
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ModelAndView detalhesEvento(@PathVariable("id") Long id) {
+		Cliente cliente = clienteRepository.findById(id);
+		ModelAndView mv = new ModelAndView("evento/detalhesEvento");
+		mv.addObject("cliente", cliente);
+		
 //		Iterable<Convidado> convidados = cr.findByEvento(evento);
 //		mv.addObject("convidados", convidados);
-//		return mv;
-//	}
-//	
+		return mv;
+	}
+	
 	@RequestMapping("/deletar")
 	public String deletarEvento(Long id) {
-		Cliente evento = clienteRepository.findById(id);
-		clienteRepository.delete(evento);
+		Cliente cliente = clienteRepository.findById(id);
+		clienteRepository.delete(cliente);
+		return "redirect:/clientes";
+	}
+	
+	@RequestMapping("/update")
+	public String form_update(Long id) {
+		Cliente cliente = clienteRepository.findById(id);
+		clienteRepository.save(cliente);
 		return "redirect:/clientes";
 	}
 //	
