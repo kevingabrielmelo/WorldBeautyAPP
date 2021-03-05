@@ -46,6 +46,13 @@ public class ClienteController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
+	public String form_update(Cliente cliente , Long id) {
+		clienteRepository.findById(id);
+		clienteRepository.save(cliente);
+		return "redirect:/clientes";
+	}
+	
 	@RequestMapping("/deletar")
 	public String deletarEvento(Long id) {
 		Cliente cliente = clienteRepository.findById(id);

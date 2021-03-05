@@ -2,7 +2,9 @@
 <html xmlns:th="http://thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-<title>Detalhes do evento</title>
+<title>Editar usuário</title>
+<!-- Para corrigir acentos da página! -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- Para corrigir acentos da página! -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!--Import Google Icon Font-->
@@ -18,29 +20,19 @@
 
 <style>
 body {
-	background-image: url('imagens/evento_cadastro.jpg');
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
+  background-image: url('imagens/evento_cadastro.jpg'); 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
-
-th {
-	color: white;
+input{
+  color: white;
 }
-
-td {
-	color: white;
-}
-
 form {
 	text-align: center;
-	position: static;
-	width: 100%;
-}
-
-input {
-	color: white;
-}
+	position: absolute;
+	width:100%;
+	}
 </style>
 
 <body>
@@ -48,101 +40,51 @@ input {
 	<!-- Paginação rosa da página! -->
 	<nav>
 		<div class="nav-wrapper">
-			<div th:each="clientes : ${cliente}">
-				<a href="//www.google.com"><img src="imagens/logo-sem-fundo.PNG"
-					height="65" width="90"
-					class="media-object  img-responsive img-thumbnail"></a>
-				<ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
-				<a class="brand-logo center"><span th:text="${cliente.nome}"></span><i
-					class="material-icons right">mood</i></a>
-				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="/" class="waves-effect waves-light btn">Página
-							inicial <i class="material-icons right">home</i>
-					</a></li>
-					<li><a href="/clientes" class="waves-effect waves-light btn">Voltar
-							<i class="material-icons right">arrow_back</i>
-					</a></li>
-				</ul>
-			</div>
+		<a href="//www.google.com"><img src="imagens/cliente.png" height="65" width="90" class="media-object  img-responsive img-thumbnail"></a>
+     	 <ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
+			<a href="#" class="brand-logo center">Edição de usuário <i class="material-icons right">add_circle</i></a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="/" class="waves-effect waves-light btn">Página inicial <i class="material-icons right">home</i></a></li>
+				<li><a href="/clientes" class="waves-effect waves-light btn">Lista de clientes <i class="material-icons right">format_list_numbered</i></a></li>
+			</ul>
 		</div>
 	</nav>
 
-	<table class="container">
-		<thead>
-			<tr>
-				<th>Nome do cliente</th>
-				<th>Telefone</th>
-				<th>Data de nascimento</th>
-				<th>Gênero</th>
-				<th>Editar</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><div contenteditable><span th:text="${cliente.nome}"></span></div></td>
-				<td><span th:text="${cliente.telefone}"></span></td>
-				<td><span th:text="${cliente.dataNascimento}"></span></td>
-				<td><span th:text="${cliente.genero}"></span></td>
-				<td><i><b><a th:href="@{/update(id = ${cliente.id})}"><i
-								class="material-icons left">create</i></a></b></i></td>
-			</tr>
-		</tbody>
-	</table>
-
-	<th:block th:include="mensagemValidacao"></th:block>
-
-	<br>
-	<br>
-	<br>
-			<!-- <div class="row center">
-				<h5 class="header center white-text">Adicione convidados a o evento!</h5>
-			</div>
-	
 	<form method="post">
+
 		<div class="row">
 				<div class="container">
 					<div class="input-field col s6">
-						<i class="material-icons prefix">person</i> <input
-							id="nomeConvidado" type="text" name="nomeConvidado" required> <label
-							for="icon_prefix">Nome do convidado:</label>
+						<i class="material-icons prefix">people</i> <input
+							id="nome_evento" type="text" name="nome" class="validate" required> <label
+							for="icon_prefix">Nome:</label>
 					</div>
 					
 					<div class="input-field col s6">
-						<i class="material-icons prefix">credit_card</i> <input
-							id="rg" type="text" name="rg" class="validate" pattern="[0-9]{2}.[0-9]{3}.[0-9]{3}-[A-Z-0-9-a-z]{1}" required> <label
-							for="icon_prefix">RG do convidado: (XX.XXX.XXX-X)</label>
+						<i class="material-icons prefix">home</i> <input
+							id="local" type="text" name="telefone" class="validate" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}" required> <label
+							for="icon_prefix">Telefone: (XX) XXXXX-XXXX</label>
+					</div>
+					
+					<div class="input-field col s6">
+						<i class="material-icons prefix">event</i> <input
+							id="data" type="text" name="dataNascimento" class="validate" pattern="\d{1,2}/\d{1,2}/\d{4}" required> <label
+							for="icon_prefix">Data de Nascimento: XX/XX/XXXX</label>
+					</div>
+					
+					<div class="input-field col s6">
+						<i class="material-icons prefix">access_time</i> <input
+							id="horario" type="text" name="genero" class="validate" required> <label
+							for="icon_telephone">Gênero:</label>
 					</div>
 					
 					<button class="btn waves-effect waves-light" type="submit">
-					Adicionar convidado <i class="material-icons right">person_add</i>
-					</button>	
+					Salvar cadastro <i class="material-icons right">send</i>
+					</button>
+					
 				</div>
 		</div>
 	</form>
-	
-	<br>
-	
-	<div class="row center">
-				<h5 class="header center white-text">Lista de convidados:</h5>
-			</div>
-	<table class="container">
-		<thead>
-			<tr>
-				<th>Nome do convidado</th>
-				<th>RG do convidado</th>
-				<th>Deletar</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="convidado : ${convidados}">
-				<td><span th:text="${convidado.nomeConvidado}"></span></td>
-				<td><span th:text="${convidado.rg}"></span></td>
-				<td><i><b><a th:href="@{/deletarConvidado(rg = ${convidado.rg})}"><i class="material-icons left">delete_forever</i></a></b></i></td>
-			</tr>
-		</tbody>
-	</table> -->
-
-			<script type="text/javascript"
-				src="materialize/js/materialize.min.js"></script>
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
 </html>
