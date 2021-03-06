@@ -57,6 +57,7 @@ body {
 				<th>Data de nascimento</th>
 				<th>Gênero</th>
 				<th>Deletar</th>
+				<th>Produtos</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -66,6 +67,7 @@ body {
 				<td><span th:text="${cliente.dataNascimento}"></span></td>
 				<td><span th:text="${cliente.genero}"></span></td>
 				<td><i><b><a th:href="@{/deletar(id = ${cliente.id})}"><i class="material-icons left">delete_forever</i></a></b></i></td>
+				<td><i><b><a th:href="@{/{id}(id = ${cliente.id})}"><i class="material-icons left">add_shopping_cart</i></a></b></i></td>
 			</tr>
 		</tbody>
 	</table>

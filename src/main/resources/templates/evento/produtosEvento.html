@@ -2,7 +2,9 @@
 <html xmlns:th="http://thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-<title>Visualização de clientes</title>
+<title>Produtos Usúario</title>
+<!-- Para corrigir acentos da página! -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- Para corrigir acentos da página! -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!--Import Google Icon Font-->
@@ -23,55 +25,48 @@ body {
   background-attachment: fixed;
   background-size: cover;
 }
-
-	th{
-		color: white;
+input{
+  color: white;
+}
+form {
+	text-align: center;
+	position: absolute;
+	width:100%;
 	}
-	
-	td{
-	color: white;
-	}
-	a{ color: white; }
 </style>
 
 <body>
 
-<!-- Paginação rosa da página! -->
+	<!-- Paginação rosa da página! -->
 	<nav>
 		<div class="nav-wrapper">
 		<a href="//www.google.com"><img src="imagens/cliente.png" height="65" width="90" class="media-object  img-responsive img-thumbnail"></a>
      	 <ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
-			<a href="#" class="brand-logo center">Lista de clientes <i class="material-icons right">format_list_numbered</i></a>
+			<a href="#" class="brand-logo center">Produtos Usúario <i class="material-icons right">add_circle</i></a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 				<li><a href="/" class="waves-effect waves-light btn">Página inicial <i class="material-icons right">home</i></a></li>
-				<li><a href="/cadastrarCliente" class="waves-effect waves-light btn">Cadastrar novo cliente <i class="material-icons right">add_circle</i></a></li>
+				<li><a href="/produtos" class="waves-effect waves-light btn">Lista de Produtos <i class="material-icons right">format_list_numbered</i></a></li>
 			</ul>
 		</div>
 	</nav>
-	
-	<table class="container">
-		<thead>
-			<tr>
-				<th>Nome</th>
-				<th>Telefone</th>
-				<th>Data de nascimento</th>
-				<th>Gênero</th>
-				<th>Deletar</th>
-				<th>Produtos</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="cliente : ${eventos}">
-				<td><i><b><a th:href="@{/{id}(id = ${cliente.id})}"><span th:text="${cliente.nome}"></span> <i class="material-icons left">create</i></a></b></i></td>
-				<td><span th:text="${cliente.telefone}"></span></td>
-				<td><span th:text="${cliente.dataNascimento}"></span></td>
-				<td><span th:text="${cliente.genero}"></span></td>
-				<td><i><b><a th:href="@{/deletar(id = ${cliente.id})}"><i class="material-icons left">delete_forever</i></a></b></i></td>
-				<td><i><b><a th:href="@{/{id}(id = ${cliente.id})}"><i class="material-icons left">add_shopping_cart</i></a></b></i></td>
-			</tr>
-		</tbody>
-	</table>
 
+	<form method="post">
+
+		<div class="row">
+				<div class="container">
+					<div class="input-field col s6">
+						<i class="material-icons prefix">people</i> <input
+							id="produto" type="text" name="produto" class="validate" required> <label
+							for="icon_prefix">Produto Consumido</label>
+					</div>
+					
+					<button class="btn waves-effect waves-light" type="submit">
+					Salvar produto <i class="material-icons right">send</i>
+					</button>
+					
+				</div>
+		</div>
+	</form>
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
 </html>
