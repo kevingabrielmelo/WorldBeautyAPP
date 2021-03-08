@@ -64,12 +64,13 @@ form {
 					<div class="input-field col s6">
 						<i class="material-icons prefix">home</i> 
 						<input type="text" name="telefone" id="telefone" maxlength="15" onkeypress="mascara(this, mtel);" />
-						 <label for="icon_prefix">Telefone: (XX) XXXXX-XXXX</label>
+						 <label th:text="${cliente.telefone}" for="icon_prefix">Telefone: (XX) XXXXX-XXXX</label>
 					</div>
 					
 					<div class="input-field col s6">
 						<i class="material-icons prefix">event</i> 
 						<input id="data" type="text" name="dataNascimento" maxlength="10" class="validate" onkeypress="mascara(this, mdate);"> <label
+						th:text="${cliente.dataNascimento}"
 							for="icon_prefix">Data de Nascimento: XX/XX/XXXX</label>
 					</div>
 					
