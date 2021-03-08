@@ -6,7 +6,7 @@ import com.eventosapp.models.Produto;
 
 public interface ProdutoRepository extends CrudRepository<Produto, String> {
 
-	Produto findById(Long codigo);
+//	Produto findById(Long id_produto);
 //	Iterable<Cliente> findByEvento();
 //	Convidado findByRg(String rg);
 }
