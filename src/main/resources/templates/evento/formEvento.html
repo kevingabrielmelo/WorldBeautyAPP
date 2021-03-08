@@ -17,7 +17,8 @@
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-
+<script type="text/javascript" src="materialize/js/maskTel.js"> </script> <!-- Máscara para o telefone -->
+<script type="text/javascript" src="materialize/js/maskData.js"> </script> <!-- Máscara para o data -->
 <style>
 body {
   background-image: url('imagens/evento_cadastro.jpg'); 
@@ -61,14 +62,14 @@ form {
 					</div>
 					
 					<div class="input-field col s6">
-						<i class="material-icons prefix">home</i> <input
-							id="local" type="text" name="telefone" class="validate" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}" required> <label
-							for="icon_prefix">Telefone: (XX) XXXXX-XXXX</label>
+						<i class="material-icons prefix">home</i> 
+						<input type="text" name="telefone" id="telefone" maxlength="15" onkeypress="mascara(this, mtel);" />
+						 <label for="icon_prefix">Telefone: (XX) XXXXX-XXXX</label>
 					</div>
 					
 					<div class="input-field col s6">
-						<i class="material-icons prefix">event</i> <input
-							id="data" type="text" name="dataNascimento" class="validate" pattern="\d{1,2}/\d{1,2}/\d{4}" required> <label
+						<i class="material-icons prefix">event</i> 
+						<input id="data" type="text" name="dataNascimento" maxlength="10" class="validate" onkeypress="mascara(this, mdate);"> <label
 							for="icon_prefix">Data de Nascimento: XX/XX/XXXX</label>
 					</div>
 					
