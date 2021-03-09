@@ -6,18 +6,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Cliente{
+public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
 	private String nome;
-	
+
 	private String telefone;
-	
+
 	private String dataNascimento;
-	
+
 	private String genero;
 
 	public long getId() {
@@ -59,6 +59,5 @@ public class Cliente{
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
-	
-	
+
 }
