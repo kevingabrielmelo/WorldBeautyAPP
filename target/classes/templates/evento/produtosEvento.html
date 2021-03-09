@@ -38,6 +38,18 @@ form {
 	position: absolute;
 	width: 100%;
 }
+
+.espacamento{
+	margin: 0 auto;
+	max-width: 1280px;
+	width: 67%;
+	margin-top:17%;	
+}
+
+.espacar_botao{
+	margin-top:3%;
+}
+
 </style>
 
 <body>
@@ -72,13 +84,31 @@ form {
 						for="icon_prefix">Nome do produto:</label>
 				</div>
 
-				<button class="btn waves-effect waves-light" type="submit">
+				<button class="btn waves-effect waves-light espacar_botao" type="submit">
 					Salvar cadastro <i class="material-icons right">send</i>
 				</button>
 
 			</div>
 		</div>
 	</form>
+		
+	<table class="espacamento">
+		<thead>
+			<tr>
+				<th>Produtos</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="produto : ${eventos}">
+				<td><i><b><a
+							th:href="@{/{id}(id = ${produto.id_produto})}"><span
+								th:text="${produto.produto}"></span> <i
+								class="material-icons left">create</i></a></b></i></td>
+				<td><span th:text="${produto.telefone}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+	
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
 </html>
