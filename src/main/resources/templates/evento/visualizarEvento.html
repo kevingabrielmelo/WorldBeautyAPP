@@ -18,42 +18,64 @@
 
 <style>
 body {
-  background-image: url('imagens/evento_cadastro.jpg'); 
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+	background-image: url('imagens/evento_cadastro.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
 }
 
-	th{
-		color: white;
-	}
-	
-	td{
+th {
 	color: white;
-	}
-	a{ color: white; }
+}
+
+td {
+	color: white;
+}
+
+a {
+	color: white;
+	
+}
+.espacar_botao{
+	margin-top:3%;
+}
 </style>
 
 <body>
 
-<!-- Paginação rosa da página! -->
+	<!-- Paginação rosa da página! -->
 	<nav>
 		<div class="nav-wrapper">
-		<a href="//www.google.com"><img src="imagens/cliente.png" height="65" width="90" class="media-object  img-responsive img-thumbnail"></a>
-     	 <ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
-			<a href="#" class="brand-logo center">Lista de clientes <i class="material-icons right">format_list_numbered</i></a>
+			<a href="//www.google.com"><img src="imagens/cliente.png"
+				height="65" width="90"
+				class="media-object  img-responsive img-thumbnail"></a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
+			<a href="#" class="brand-logo center">Lista de clientes <i
+				class="material-icons right">format_list_numbered</i></a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="/" class="waves-effect waves-light btn">Página inicial <i class="material-icons right">home</i></a></li>
-				<li><a href="/cadastrarCliente" class="waves-effect waves-light btn">Cadastrar novo cliente <i class="material-icons right">add_circle</i></a></li>
+				<li><a href="/" class="waves-effect waves-light btn">Página
+						inicial <i class="material-icons right">home</i>
+				</a></li>
+				<li><a href="/cadastrarCliente"
+					class="waves-effect waves-light btn">Cadastrar novo cliente <i
+						class="material-icons right">add_circle</i></a></li>
 			</ul>
 		</div>
 	</nav>
+	<form action="pesqNome" method="get">
 	
-		   <form action="pesqNome" method="get">
-          <input type="text" id="nome" name="nome" placeholder="Pesquise pelo nome" />
-          <input id="btn-submit" class="btn-get-started" type="submit" value="Pesquisar">
-        </form>
-	
+		<div class="row">
+				<div class="container">
+					<div class="input-field col s6">
+						<i class="material-icons prefix">people</i> <input type="text"
+							id="nome" name="nome" placeholder="Pesquise pelo nome" />
+					</div>
+					<input id="btn-submit"
+						class="btn waves-effect waves-light espacar_botao" type="submit"
+						value="Pesquisar">
+				</div>
+			</div>
+	</form>
 	<table class="container">
 		<thead>
 			<tr>
@@ -67,12 +89,15 @@ body {
 		</thead>
 		<tbody>
 			<tr th:each="cliente : ${eventos}">
-				<td><i><b><a th:href="@{/{id}(id = ${cliente.id})}"><span th:text="${cliente.nome}"></span> <i class="material-icons left">create</i></a></b></i></td>
+				<td><i><b><a th:href="@{/{id}(id = ${cliente.id})}"><span
+								th:text="${cliente.nome}"></span> <i class="material-icons left">create</i></a></b></i></td>
 				<td><span th:text="${cliente.telefone}"></span></td>
 				<td><span th:text="${cliente.dataNascimento}"></span></td>
 				<td><span th:text="${cliente.genero}"></span></td>
-				<td><i><b><a th:href="@{/deletar(id = ${cliente.id})}"><i class="material-icons left">delete_forever</i></a></b></i></td>
-				<td><i><b><a th:href="@{/produtos}"><i class="material-icons left">add_shopping_cart</i></a></b></i></td>
+				<td><i><b><a th:href="@{/deletar(id = ${cliente.id})}"><i
+								class="material-icons left">delete_forever</i></a></b></i></td>
+				<td><i><b><a th:href="@{/produtos}"><i
+								class="material-icons left">add_shopping_cart</i></a></b></i></td>
 			</tr>
 		</tbody>
 	</table>
