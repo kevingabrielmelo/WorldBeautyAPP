@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.eventosapp.models.Cliente;
-import com.eventosapp.repository.ClienteRepository;
 import com.eventosapp.models.nome_pesq;
+import com.eventosapp.repository.ClienteRepository;
 
 @Controller
 public class ClienteController {
@@ -31,7 +31,7 @@ public class ClienteController {
 	@RequestMapping("/clientes")
 	public ModelAndView listaEventos() {
 		ModelAndView mv = new ModelAndView("/evento/visualizarEvento");
-		Iterable<Cliente> clientes = clienteRepository.findAll();
+		Iterable<Cliente> clientes = clienteRepository.findAllByOrderByNome();
 		mv.addObject("eventos", clientes);
 		return mv;
 	}
