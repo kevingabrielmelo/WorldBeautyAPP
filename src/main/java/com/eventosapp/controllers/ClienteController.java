@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.eventosapp.models.Cliente;
 import com.eventosapp.repository.ClienteRepository;
+import com.eventosapp.models.nome_pesq;
 
 @Controller
 public class ClienteController {
@@ -85,4 +86,24 @@ public class ClienteController {
 //		clienteRepository.save(cliente);
 //		return "redirect:/{codigo}";
 //	}
+	
+	
+	@RequestMapping("/pesqNome")
+	public String pesqNome(String nome) {
+	nome_pesq.nomePesq  = nome;
+	System.out.println(nome_pesq.nomePesq);
+		return "redirect:/teste";
+
+		
+}
+	
+	@RequestMapping("/teste")
+	public ModelAndView RespEventos() {
+		String nome = nome_pesq.nomePesq; 
+		ModelAndView mv = new ModelAndView("/evento/teste");
+		Iterable<Cliente> clientes = clienteRepository.findAllByNome(nome);
+		mv.addObject("eventoPesqNome", clientes);
+		return mv;
+}
+
 }
