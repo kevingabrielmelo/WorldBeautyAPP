@@ -39,17 +39,16 @@ form {
 	width: 100%;
 }
 
-.espacamento{
+.espacamento {
 	margin: 0 auto;
 	max-width: 1280px;
 	width: 67%;
-	margin-top:17%;	
+	margin-top: 17%;
 }
 
-.espacar_botao{
-	margin-top:3%;
+.espacar_botao {
+	margin-top: 3%;
 }
-
 </style>
 
 <body>
@@ -79,19 +78,24 @@ form {
 		<div class="row">
 			<div class="container">
 				<div class="input-field col s6">
-					 <input id="nome_produto"
-						type="text" name="nome_produto" class="validate" required> <label
-						for="icon_prefix">Nome do produto:</label>
+					<select name="nome_produto" id="nome_produto">
+						<option value="Shampoo">Shampoo</option>
+						<option value="Creme">Creme de pele</option>
+						<option value="Tratamento">Tratamento de Cabelo</option>
+						<option value="Manicure">Manicure</option>
+					</select> 
+					<label for="icon_prefix">Nome do produto:</label>
 				</div>
 
-				<button class="btn waves-effect waves-light espacar_botao" type="submit">
+				<button class="btn waves-effect waves-light espacar_botao"
+					type="submit">
 					Salvar produtos <i class="material-icons right">send</i>
 				</button>
 
 			</div>
 		</div>
 	</form>
-		
+
 	<table class="espacamento">
 		<thead>
 			<tr>
@@ -108,7 +112,7 @@ form {
 			</tr>
 		</tbody>
 	</table>
-	
+
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
 </html>
