@@ -92,15 +92,15 @@ public class ClienteController {
 	public String pesqNome(String nome) {
 	nome_pesq.nomePesq  = nome;
 	System.out.println(nome_pesq.nomePesq);
-		return "redirect:/teste";
+		return "redirect:/usuario";
 
 		
 }
 	
-	@RequestMapping("/teste")
+	@RequestMapping("/usuario")
 	public ModelAndView RespEventos() {
 		String nome = nome_pesq.nomePesq; 
-		ModelAndView mv = new ModelAndView("/evento/teste");
+		ModelAndView mv = new ModelAndView("/evento/usuario");
 		Iterable<Cliente> clientes = clienteRepository.findAllByNome(nome);
 		mv.addObject("eventoPesqNome", clientes);
 		return mv;
