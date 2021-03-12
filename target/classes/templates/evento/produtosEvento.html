@@ -21,6 +21,9 @@
 <!-- Máscara para o telefone -->
 <script type="text/javascript" src="materialize/js/maskData.js"> </script>
 <!-- Máscara para o data -->
+<link rel="stylesheet" type="text/css"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
 <style>
 body {
 	background-image: url('imagens/evento_cadastro.jpg');
@@ -49,6 +52,11 @@ form {
 .espacar_botao {
 	margin-top: 3%;
 }
+
+.browser-default {
+	background-image: url('imagens/evento_cadastro.jpg');
+	color: black;
+}
 </style>
 
 <body>
@@ -73,18 +81,19 @@ form {
 		</div>
 	</nav>
 
+	<div class="input-field col s6"></div>
+
 	<form method="post">
 
 		<div class="row">
 			<div class="container">
 				<div class="input-field col s6">
-					<select name="nome_produto" id="nome_produto">
-						<option value="Shampoo">Shampoo</option>
-						<option value="Creme">Creme de pele</option>
-						<option value="Tratamento">Tratamento de Cabelo</option>
-						<option value="Manicure">Manicure</option>
-					</select> 
-					<label for="icon_prefix">Nome do produto:</label>
+					<select class="browser-default">
+						<option value="" disabled selected>Escolha o produto:</option>
+						<option value="shaampo">Shaampo</option>
+						<option value="condicionador">Condicionador</option>
+						<option value="tinta-cabelo">Tinta de cabelo</option>
+					</select>
 				</div>
 
 				<button class="btn waves-effect waves-light espacar_botao"

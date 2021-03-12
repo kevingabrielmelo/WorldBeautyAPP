@@ -11,17 +11,14 @@ import javax.persistence.JoinColumn;
 public class Produto {
 
 	@Id
-	@GeneratedValue(strategy =
-			GenerationType.SEQUENCE, 
-	        generator = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@ManyToOne
-	@JoinColumn(name="idCliente")
+	@JoinColumn(name = "id_cliente")
 	private Cliente idCliente;
-	
+
 	private String nome_produto;
-	
 
 	public Long getId() {
 		return id;
@@ -37,5 +34,13 @@ public class Produto {
 
 	public void setNome_produto(String nome_produto) {
 		this.nome_produto = nome_produto;
+	}
+
+	public Cliente getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Cliente idCliente) {
+		this.idCliente = idCliente;
 	}
 }
