@@ -1,6 +1,6 @@
 package com.eventosapp.models;
 
-public class nome_pesq {
+public class NomePesq {
 
 	public static String nomePesq;
 

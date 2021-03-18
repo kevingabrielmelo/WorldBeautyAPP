@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.eventosapp.models.Cliente;
-import com.eventosapp.models.nome_pesq;
+import com.eventosapp.models.NomePesq;
 import com.eventosapp.repository.ClienteRepository;
 
 @Controller
@@ -90,8 +90,8 @@ public class ClienteController {
 	
 	@RequestMapping("/pesqNome")
 	public String pesqNome(String nome) {
-	nome_pesq.nomePesq  = nome;
-	System.out.println(nome_pesq.nomePesq);
+	NomePesq.nomePesq  = nome;
+	System.out.println(NomePesq.nomePesq);
 		return "redirect:/usuario";
 
 		
@@ -99,7 +99,7 @@ public class ClienteController {
 	
 	@RequestMapping("/usuario")
 	public ModelAndView RespEventos() {
-		String nome = nome_pesq.nomePesq; 
+		String nome = NomePesq.nomePesq; 
 		ModelAndView mv = new ModelAndView("/evento/usuario");
 		Iterable<Cliente> clientes = clienteRepository.findAllByNome(nome);
 		mv.addObject("eventoPesqNome", clientes);

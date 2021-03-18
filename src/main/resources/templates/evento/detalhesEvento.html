@@ -29,6 +29,10 @@ body {
 	background-size: cover;
 }
 
+::placeholder {
+  color: #A8A8A8;
+}
+
 input {
 	color: white;
 }
@@ -50,7 +54,7 @@ form {
 				class="media-object  img-responsive img-thumbnail"></a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
 			<a href="#" class="brand-logo center">Edição de usuário <i
-				class="material-icons right">add_circle</i></a>
+				class="material-icons right">create</i></a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 				<li><a href="/" class="waves-effect waves-light btn">Página
 						inicial <i class="material-icons right">home</i>
@@ -68,30 +72,28 @@ form {
 			<div class="container">
 				<div class="input-field col s6">
 					<i class="material-icons prefix">people</i> <input id="nome_evento"
-						type="text" name="nome" class="validate" required> <label
-						th:text="${cliente.nome}" for="icon_prefix">Nome:</label>
+						type="text" name="nome" class="validate" required th:value="${cliente.nome}" th:placeholder="${cliente.nome}"> 
+						<label for="icon_prefix">Nome:</label>
 				</div>
 
 				<div class="input-field col s6">
 					<i class="material-icons prefix">home</i> <input type="text"
 						name="telefone" id="telefone" maxlength="15"
-						onkeypress="mascara(this, mtel);" /> <label
-						th:text="${cliente.telefone}" for="icon_prefix">Telefone:
-						(XX) XXXXX-XXXX</label>
+						onkeypress="mascara(this, mtel);" th:value="${cliente.telefone}" th:placeholder="${cliente.telefone}" /> 
+						<label for="icon_prefix">Telefone: (XX) XXXXX-XXXX</label>
 				</div>
 
 				<div class="input-field col s6">
-					<i class="material-icons prefix">event</i> <input id="data"
-						type="text" name="dataNascimento" maxlength="10" class="validate"
-						onkeypress="mascara(this, mdate);"> <label
-						th:text="${cliente.dataNascimento}" for="icon_prefix">Data
-						de Nascimento: XX/XX/XXXX</label>
+					<i class="material-icons prefix">event</i>
+					 <input id="data" type="text" name="dataNascimento" maxlength="10" class="validate" th:value="${cliente.dataNascimento}"
+						onkeypress="mascara(this, mdate);" th:placeholder="${cliente.dataNascimento}"> 
+						<label for="icon_prefix" >Data de Nascimento: XX/XX/XXXX</label>
 				</div>
 
 				<div class="input-field col s6">
-					<i class="material-icons prefix">access_time</i> <input
-						id="horario" type="text" name="genero" class="validate" required>
-					<label th:text="${cliente.genero}" for="icon_telephone">Gênero:</label>
+					<i class="material-icons prefix">access_time</i> 
+					<input id="horario"  type="text" name="genero" class="validate" th:value="${cliente.genero}" th:placeholder="${cliente.genero}"required>
+					<label  for="icon_telephone">Gênero:</label>
 				</div>
 
 				<button class="btn waves-effect waves-light" type="submit">
