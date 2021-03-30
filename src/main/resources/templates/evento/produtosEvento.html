@@ -21,9 +21,6 @@
 <!-- Máscara para o telefone -->
 <script type="text/javascript" src="materialize/js/maskData.js"> </script>
 <!-- Máscara para o data -->
-<link rel="stylesheet" type="text/css"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-
 <style>
 body {
 	background-image: url('imagens/evento_cadastro.jpg');
@@ -36,6 +33,14 @@ input {
 	color: white;
 }
 
+th {
+	color: white;
+}
+
+td {
+	color: white;
+}
+
 form {
 	text-align: center;
 	position: absolute;
@@ -45,19 +50,14 @@ form {
 .espacamento {
 	margin: 0 auto;
 	max-width: 1280px;
-	width: 67%;
-	margin-top: 17%;
 }
 
 .espacar_botao {
 	margin-top: 3%;
 }
-
-.browser-default {
-	background-image: url('imagens/evento_cadastro.jpg');
-	color: black;
-}
 </style>
+
+
 
 <body>
 
@@ -81,47 +81,45 @@ form {
 		</div>
 	</nav>
 
-	<div class="input-field col s6"></div>
-
 	<form method="post">
 
-		<div class="row">
+		<div class="row espacamento">
 			<div class="container">
 				<div class="input-field col s6">
-					<select class="browser-default">
-						<option value="" disabled selected>Escolha o produto:</option>
-						<option value="shaampo">Shaampo</option>
-						<option value="condicionador">Condicionador</option>
-						<option value="tinta-cabelo">Tinta de cabelo</option>
+					<select class="browser-default" name="nome_produto"
+						id="nome_produto">
+						<option value="" disabled selected>Selecione o Produto</option>
+						<option value="Shampoo">Shampoo</option>
+						<option value="Creme de pele">Creme de pele</option>
+						<option value="Tratamento de Cabelo">Tratamento de Cabelo</option>
+						<option value="Manicure">Manicure</option>
 					</select>
+					<button class="btn waves-effect waves-light espacar_botao"
+						type="submit">
+						Salvar produtos <i class="material-icons right">send</i>
+					</button>
 				</div>
+				<div class="input-field col s6">
 
-				<button class="btn waves-effect waves-light espacar_botao"
-					type="submit">
-					Salvar produtos <i class="material-icons right">send</i>
-				</button>
+					<table>
+						<thead>
+							<tr>
+								<th>Lista de Produtos</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="produto : ${produto}">
+				<td><span th:text="${produto.idCliente}"></span> </td>
+				<td><span th:text="${produto.nome_produto}"></span></td>
+
+			</tr>
+						</tbody>
+					</table>
+				</div>
 
 			</div>
 		</div>
 	</form>
-
-	<table class="espacamento">
-		<thead>
-			<tr>
-				<th>Lista de Produtos</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="produto : ${eventos}">
-				<td><i><b><a
-							th:href="@{/{id}(id = ${produto.id_produto})}"><span
-								th:text="${produto.produto}"></span> <i
-								class="material-icons left">create</i></a></b></i></td>
-				<td><span th:text="${produto.telefone}"></span></td>
-			</tr>
-		</tbody>
-	</table>
-
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
 </html>
