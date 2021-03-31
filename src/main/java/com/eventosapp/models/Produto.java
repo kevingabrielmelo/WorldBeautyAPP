@@ -11,20 +11,22 @@ import javax.persistence.JoinColumn;
 public class Produto {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-
-	@ManyToOne
-	@JoinColumn(name = "id_cliente")
-	private Cliente idCliente;
-
+	@GeneratedValue(strategy =
+			GenerationType.SEQUENCE, 
+	        generator = "id")
+	private long id;
+	
+	
+	private long idCliente;
+	
 	private String nome_produto;
+	
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -36,11 +38,12 @@ public class Produto {
 		this.nome_produto = nome_produto;
 	}
 
-	public Cliente getIdCliente() {
+	public long getIdCliente() {
 		return idCliente;
 	}
 
-	public void setIdCliente(Cliente idCliente) {
+	public void setIdCliente(long idCliente) {
 		this.idCliente = idCliente;
 	}
+
 }

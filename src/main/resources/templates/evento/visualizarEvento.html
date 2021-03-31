@@ -96,7 +96,7 @@ a {
 				<td><span th:text="${cliente.genero}"></span></td>
 				<td><i><b><a th:href="@{/deletar(id = ${cliente.id})}"><i
 								class="material-icons left">delete_forever</i></a></b></i></td>
-				<td><i><b><a th:href="@{/produtos}"><i
+				<td><i><b><a th:href="@{/produtos_{id}(id = ${cliente.id})}"><i
 								class="material-icons left">add_shopping_cart</i></a></b></i></td>
 			</tr>
 		</tbody>
