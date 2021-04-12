@@ -17,4 +17,6 @@ public interface ClienteRepository extends CrudRepository<Cliente, String> {
 	//Ordena em ordem alfabética
 	public List<Cliente> findAllByOrderByNome();
 	
+	//Pesquisa por gênero
+	public List<Cliente> findAllByGeneroOrderByNome(String genero);	
 }

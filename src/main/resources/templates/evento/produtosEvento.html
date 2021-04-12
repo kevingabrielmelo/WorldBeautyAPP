@@ -99,6 +99,23 @@ form {
 						Salvar produtos <i class="material-icons right">send</i>
 					</button>
 				</div>
+
+				<div class="input-field col s6">
+
+					<table>
+						<thead>
+							<tr>
+								<th>Cliente</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="cliente : ${cliente}">
+								<td><span th:text="${cliente.nome}"></span></td>
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
 				<div class="input-field col s6">
 
 					<table>
@@ -109,14 +126,13 @@ form {
 						</thead>
 						<tbody>
 							<tr th:each="produto : ${produto}">
-				<td><span th:text="${produto.idCliente}"></span> </td>
-				<td><span th:text="${produto.nome_produto}"></span></td>
+								<!-- 	<td><span th:text="${produto.nome_cliente}"></span> </td> -->
+								<td><span th:text="${produto.nome_produto}"></span></td>
 
-			</tr>
+							</tr>
 						</tbody>
 					</table>
 				</div>
-
 			</div>
 		</div>
 	</form>

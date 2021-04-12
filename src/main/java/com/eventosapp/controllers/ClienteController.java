@@ -16,18 +16,18 @@ public class ClienteController {
 
 	@Autowired
 	private ClienteRepository clienteRepository;
-	
-	@RequestMapping(value="/cadastrarCliente", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/cadastrarCliente", method = RequestMethod.GET)
 	public String form() {
 		return "evento/formEvento";
 	}
-	
-	@RequestMapping(value="/cadastrarCliente", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/cadastrarCliente", method = RequestMethod.POST)
 	public String form(Cliente cliente) {
 		clienteRepository.save(cliente);
 		return "redirect:/clientes";
 	}
-	
+
 	@RequestMapping("/clientes")
 	public ModelAndView listaEventos() {
 		ModelAndView mv = new ModelAndView("/evento/visualizarEvento");
@@ -35,32 +35,32 @@ public class ClienteController {
 		mv.addObject("eventos", clientes);
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ModelAndView detalhesEvento(@PathVariable("id") Long id) {
 		Cliente cliente = clienteRepository.findById(id);
 		ModelAndView mv = new ModelAndView("evento/detalhesEvento");
 		mv.addObject("cliente", cliente);
-		
+
 //		Iterable<Convidado> convidados = cr.findByEvento(evento);
 //		mv.addObject("convidados", convidados);
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
-	public String form_update(Cliente cliente , Long id) {
+	public String form_update(Cliente cliente, Long id) {
 		clienteRepository.findById(id);
 		clienteRepository.save(cliente);
 		return "redirect:/clientes";
 	}
-	
+
 	@RequestMapping("/deletar")
 	public String deletarEvento(Long id) {
 		Cliente cliente = clienteRepository.findById(id);
 		clienteRepository.delete(cliente);
 		return "redirect:/clientes";
 	}
-	
+
 	@RequestMapping("/update")
 	public String form_update(Long id) {
 		Cliente cliente = clienteRepository.findById(id);
@@ -86,24 +86,39 @@ public class ClienteController {
 //		clienteRepository.save(cliente);
 //		return "redirect:/{codigo}";
 //	}
-	
-	
+
 	@RequestMapping("/pesqNome")
 	public String pesqNome(String nome) {
-	nome_pesq.nomePesq  = nome;
-	System.out.println(nome_pesq.nomePesq);
+		nome_pesq.nomePesq = nome;
+		System.out.println(nome_pesq.nomePesq);
 		return "redirect:/usuario";
 
-		
-}
-	
+	}
+
 	@RequestMapping("/usuario")
 	public ModelAndView RespEventos() {
-		String nome = nome_pesq.nomePesq; 
+		String nome = nome_pesq.nomePesq;
 		ModelAndView mv = new ModelAndView("/evento/usuario");
 		Iterable<Cliente> clientes = clienteRepository.findAllByNome(nome);
 		mv.addObject("eventoPesqNome", clientes);
 		return mv;
-}
+	}
+	
+	@RequestMapping("/listaMasculino")
+	public ModelAndView GeneroMasculino() {
+		String genero = "masculino";
+		ModelAndView mv = new ModelAndView("/evento/listaGenero");
+		Iterable<Cliente> clientes = clienteRepository.findAllByGeneroOrderByNome(genero);
+		mv.addObject("eventos", clientes);
+		return mv;
+	}
 
+	@RequestMapping("/listaFeminino")
+	public ModelAndView GeneroFeminino() {
+		String genero = "feminino";
+		ModelAndView mv = new ModelAndView("/evento/listaGenero");
+		Iterable<Cliente> clientes = clienteRepository.findAllByGeneroOrderByNome(genero);
+		mv.addObject("eventos", clientes);
+		return mv;
+	}
 }

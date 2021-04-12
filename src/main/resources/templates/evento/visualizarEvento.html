@@ -11,6 +11,8 @@
 <!--Import materialize.css-->
 <link type="text/css" rel="stylesheet"
 	href="materialize/css/materialize.min.css" media="screen,projection" />
+<link rel="stylesheet" type="text/css"
+	href='<c:url value="materialize/css/materialize.min.css"/>'>
 
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -34,10 +36,10 @@ td {
 
 a {
 	color: white;
-	
 }
-.espacar_botao{
-	margin-top:3%;
+
+.espacar_botao {
+	margin-top: 3%;
 }
 </style>
 
@@ -63,19 +65,28 @@ a {
 		</div>
 	</nav>
 	<form action="pesqNome" method="get">
-	
+
 		<div class="row">
-				<div class="container">
-					<div class="input-field col s6">
-						<i class="material-icons prefix">people</i> <input type="text"
-							id="nome" name="nome" placeholder="Pesquise pelo nome" />
-					</div>
-					<input id="btn-submit"
-						class="btn waves-effect waves-light espacar_botao" type="submit"
-						value="Pesquisar">
+			<div class="container">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">people</i> <input type="text"
+						id="nome" name="nome" placeholder="Pesquise pelo nome" />
 				</div>
+				<input id="btn-submit"
+					class="btn waves-effect waves-light espacar_botao" type="submit"
+					value="Pesquisar">
+				<a href="/listaMasculino"
+					class="waves-effect waves-light btn">Pesquisar lista de
+						masculino <i class="material-icons right">add_circle</i>
+				</a>
+					<a href="/listaFeminino"
+					class="waves-effect waves-light btn">Pesquisar lista de
+						feminino <i class="material-icons right">add_circle</i>
+				</a>
 			</div>
+		</div>
 	</form>
+
 	<table class="container">
 		<thead>
 			<tr>
@@ -96,7 +107,8 @@ a {
 				<td><span th:text="${cliente.genero}"></span></td>
 				<td><i><b><a th:href="@{/deletar(id = ${cliente.id})}"><i
 								class="material-icons left">delete_forever</i></a></b></i></td>
-				<td><i><b><a th:href="@{/produtos_{id}(id = ${cliente.id})}"><i
+				<td><i><b><a
+							th:href="@{/produtos_{id}(id = ${cliente.id})}"><i
 								class="material-icons left">add_shopping_cart</i></a></b></i></td>
 			</tr>
 		</tbody>
